@@ -1,0 +1,16 @@
+@use 'sass:math';
+@use 'sass:list';
+@use './utils';
+
+@function bitAnd($a, $b) {
+    $orderedPair: utils.orderLarger($a, $b);
+    $x: list.nth($orderedPair, 1);
+    $y: list.nth($orderedPair, 2);
+    $i: 0;
+    $n: utils.upperBound($x);
+    $sum: 0;
+    @for $j from $i through $n {
+        $sum: $sum + (math.pow(2, $j) * (math.floor(math.div($x, math.pow(2, $j))) % 2) * (math.floor(math.div($y, math.pow(2, $j))) % 2));
+    }
+    @return $sum;
+}

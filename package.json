@@ -1,0 +1,26 @@
+{
+  "name": "sass-bitwise",
+  "title": "bitwise",
+  "version": "1.0.0",
+  "description": "A library of Bitwise Operations in SASS",
+  "keywords": [
+    "bitwise",
+    "sass",
+    "shifts",
+    "libsass",
+    "operations",
+    "binary",
+    "32-bit"
+  ],
+  "main": "_index.scss",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jed-3rd/sass-bitwise"
+  },
+  "author": "JED-3rd",
+  "license": "GNU",
+  "bugs": {
+    "url": "https://github.com/jed-3rd/sass-bitwise/issues"
+  },
+  "homepage": "https://github.com/jed-3rd/sass-bitwise#readme"
+}

@@ -1,0 +1,19 @@
+@use 'sass:string';
+@use './utils';
+
+@function bitSignShift($x, $n) {
+    $bi: utils.intToBinary($x);
+    $leadString: "";
+    $leadingDigit: string.slice($bi, 1, 1);
+    $digit: "";
+    @if $leadingDigit == "0" {
+        $digit: "0";
+    } @else {
+        $digit: "1";
+    }
+    @for $i from 1 through $n {
+        $leadString: $leadString + $digit;
+    }
+    $shiftString: $leadString + string.slice($bi, 1, (-$n - 1));
+    @return utils.binaryToInt($shiftString);
+}
