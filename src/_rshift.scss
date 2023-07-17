@@ -1,0 +1,12 @@
+@use 'sass:string';
+@use './utils';
+
+@function bitRShift($x, $n) {
+    $bi: utils.intToBinary($x);
+    $zeroString: "";
+    @for $i from 1 through $n {
+        $zeroString: $zeroString + "0";
+    }
+    $shiftString: $zeroString + string.slice($bi, 1, (-$n - 1));
+    @return utils.binaryToInt($shiftString);
+}

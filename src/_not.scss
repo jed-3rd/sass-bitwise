@@ -1,0 +1,7 @@
+@use 'sass:math';
+@use './utils';
+
+@function bitNot($x) {
+    $n: utils.upperBound($x);
+    @return math.pow(2, ($n + 1)) - 1 - $x;
+}

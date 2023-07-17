@@ -1,0 +1,53 @@
+@use 'sass:math';
+@use 'sass:string';
+@use 'sass:list';
+
+@function orderLarger($x, $y) {
+    @if $x >= $y {
+        @return $x, $y;
+    } @else {
+        @return $y, $x;
+    }
+}
+
+@function upperBound($x) {
+    @return math.floor(math.log($x, 2));
+}
+
+@function intToBinary($n) {
+    $biString: "";
+    @while $n > 0 {
+        $biString: $biString + "#{$n % 2}";
+        $n: math.floor(math.div($n, 2));
+    }
+    //Reverse String
+    $revBiString:"";
+    @for $i from 1 through str-length($biString) {
+        $c: str-slice($biString, $i, $i);
+        $revBiString: "#{$c}#{$revBiString}";
+    }
+    $leadZero: "";
+    @for $j from string.length($revBiString) through 31 {
+        $leadZero: $leadZero + "0";
+    }
+    @return $leadZero + $revBiString;
+}
+
+@function binaryToInt($biString) {
+    $temp: $biString;
+    @if type-of($biString) != string {
+        $temp: "#{$biString}";
+    }
+    $int: 0;
+    $base: 1;
+    @while string.length($temp) != 0 {
+        $lastDigit: 0;
+        @if string.slice($temp, string.length($temp)) == "1" {
+            $lastDigit: 1;
+        }
+        $temp: string.slice($temp, 1, -2);
+        $int: $int + ($lastDigit * $base);
+        $base: $base * 2;
+    }
+    @return $int;
+}
